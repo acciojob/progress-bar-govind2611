@@ -1,44 +1,46 @@
-//your JS code here. If required.
-const circles = document.querySelectorAll('.circle');
-const prevButton = document.getElementById('prev');
-const nextButton = document.getElementById('next');
-let currentActive = 1;
+const circle = document.querySelectorAll('.circle');
+const indigator = document.querySelector('.indigator');
+const buttons = document.querySelectorAll('button');
 
-nextButton.addEventListener('click', () => {
-  currentActive++;
+// console.log(buttons);
+// const next = document.getElementById('next');
+// const prev = document.getElementById('prev');
 
-  if (currentActive > circles.length) {
-    currentActive = circles.length;
-  }
+let current = 1;
 
-  update();
-});
-
-prevButton.addEventListener('click', () => {
-  currentActive--;
-
-  if (currentActive < 1) {
-    currentActive = 1;
-  }
-
-  update();
-});
-
-function update() {
-  circles.forEach((circle, index) => {
-    if (index < currentActive) {
-      circle.classList.add('active');
-    } else {
-      circle.classList.remove('active');
+const updateStep = (e) => {
+    if(e.target.id==="next"){
+        current = ++current;
     }
-  });
+    else{
+       current = --current;
+    }
+    
+    circle.forEach((circle, indx) => {
+        if(indx<current){
+            circle.classList.add("active");
+        }
+        else{
+            circle.classList.remove("active");
+        }
+    });
 
-  if (currentActive === 1) {
-    prevButton.disabled = true;
-  } else if (currentActive === circles.length) {
-    nextButton.disabled = true;
-  } else {
-    prevButton.disabled = false;
-    nextButton.disabled = false;
-  }
+    indigator.style.width = `${(current-1)/(circle.length-1)*100}%`
+
+    if(current===circle.length){
+        buttons[1].disabled = true;
+    }
+    else if(current===1){
+        buttons[0].disabled = true;
+    }
+    else{
+        buttons.forEach((button)=>{
+            button.disabled=false;
+        });
+    }
+
 }
+
+buttons.forEach((button)=>{
+    button.addEventListener("click", updateStep);
+});

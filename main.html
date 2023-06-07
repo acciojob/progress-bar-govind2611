@@ -8,26 +8,27 @@
 
 <body>
 	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
-
-	<section class=sec>
-		<div class="top">
-			<div class="circle active" id="circle-1">1</div>
-			<div class="line active"></div>
-			<div class="circle" id="circle-2">2</div>
-			<div class="line"></div>
-			<div class="circle" id="circle-3">3</div>
-			<div class="line"></div>
-			<div class="circle" id="circle-4">4</div>
-			<div class="line"></div>
-			<div class="circle" id="circle-5">5</div>
+	<div class="container">
+		<div class="steps">
+			<span id="circle-1" class="circle active">1</span>
+			<span id="circle-2" class="circle">2</span>
+			<span id="circle-3" class="circle">3</span>
+			<span id="circle-4" class="circle">4</span>
+			<span id="circle-5" class="circle">5</span>
+			<div class="progress-bar">
+				<span class="indigator"></span>
+			</div>
 		</div>
-		<div>
+
+		<div class="buttons">
 			<button id="prev" disabled>Prev</button>
 			<button id="next">Next</button>
 		</div>
-	</section>
+	</div>
+
+	
+    <script type="text/javascript" src="./script.js">
+</script>
 
 </body>
 
